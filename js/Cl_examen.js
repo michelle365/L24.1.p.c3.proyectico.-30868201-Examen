@@ -1,5 +1,5 @@
 export default class Cl_examen {
-    cosntructor (valor, minAprueba){
+    constructor (valor, minAprueba){
         this.valor = valor
         this.minAprueba = minAprueba
         this.estudiantes = []
@@ -26,9 +26,13 @@ export default class Cl_examen {
         this.estudiantes.push(estudiante)
     }
 
-    eliminarEstudiante (index){ 
-
-        this.estudiantes.splice(index, 1)  
+    eliminarEstudiante (nombre){ 
+      nombre = nombre;
+    let indexNombre = -1;
+    for (let i = 0; i < this.estudiantes.length; i++)
+      if (this.estudiantes[i].nombre === nombre) indexNombre = i;
+      if (indexNombre !== -1) this.estudiantes.splice(indexNombre, 1);
+      return indexNombre !== -1;
     }
    
     porcentajeAprobados(){
@@ -51,22 +55,24 @@ export default class Cl_examen {
         return mayor
      }
      notapromedio(){
-         let acum=0
-         let cont=0
-         this.estudiantes.foreach((estudiantes) =>{
-            acum += estudiantes.nota
-            cont++
+        let acum=0
+        let cont=0
+        this.estudiantes.foreach((estudiantes) =>{
+        acum += estudiantes.nota
+        cont++
         })
         return (acum/cont)
      }
      chicasEncimapromedio(){
-         let mejornota = this.notapromedio()
-         return this.estudiantes.filter((estudiantes) =>{
-            (estudiantes.sexo == "F")  && ( estudiantes.nota > mejornota)
-            }).length 
+        let mejornota = this.notapromedio()
+        return this.estudiantes.filter((estudiantes) =>{
+       (estudiantes.sexo == "F")  && ( estudiantes.nota > mejornota)
+       }).length 
     
-     }
+  }
 
-    }
+
+
+}
 
     

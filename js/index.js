@@ -14,9 +14,9 @@ valor del examen y el mínimo aprobatorio.
  * 
  * Porcentaje de reprobados: 33,3% retorna un calculo +
  * 
- * Estudiantes con la mejor nota : nombre: 'Carla', cedula: 2222, sexo: 'F', nota: 16.5 y
- * nombre: 'Luis',   cedula: 1111,   sexo: 'M',   nota: 12 (retorna array) +
+ * Estudiantes con la mejor nota : nombre: 'Carla', cedula: 2222, sexo: 'F', nota: 16.5
  * 
+ * Nota promedio : 12.3
  * Chicas por encima de la nota promedio:'Carla', cedula: 2222, sexo: 'F',  nota: 16.5 (retorna array)
  */
 
@@ -39,9 +39,9 @@ Dt_estudiantes.forEach((estudiante) => {
   
  }
 
- let porcentaReprobados = (examen,salida) => {
-    let reprobados = examen.porcentaReprobados()
-    salida.innerHTML = `<br> Porncentaje de Reprobados: ${reprobados}`
+ let porcentajeReprobados = (examen,salida) => {
+    let reprobados = examen.porcentajeReprobados()
+    salida.innerHTML = `<br> Porcentaje de Reprobados: ${reprobados}`
  }
 
 
@@ -52,8 +52,9 @@ Dt_estudiantes.forEach((estudiante) => {
  }
 
  let chicasEncimapromedio = (examen,salida) => {
-    let mejorNota = examen.chicasEncimapromedio()
-    salida.innerHTML = `<br> Chicas por encima del Promedio: ${mejorNota}`
+    let chicaspro = examen.chicasEncimapromedio()
+    salida.innerHTML = `<br> Chicas por encima del Promedio: ${chicaspro}`
+
  }
 
  let agregarEstudiante = (examen) => {
@@ -73,33 +74,12 @@ Dt_estudiantes.forEach((estudiante) => {
   let listarEstudiantes = (examen, salida) => {
     salida.innerHTML = "";
     examen.estudiantes.forEach((estudiante) => {
-      salida.innerHTML += `<br>${estudiante.nombre} ${estudiante.cedula} ${estudiante.sexo}
-      ${estudiante.nota}`;
+      salida.innerHTML += `<br>${estudiante.nombre}   ${estudiante.cedula}   ${estudiante.sexo}
+        ${estudiante.nota}`;
     });
   };
 
-  /**let agregarArticulo = (abasto) => {
-  let id = prompt("Ingrese el id del articulo:");
-  let nombre = prompt("Ingrese el nombre del articulo:");
-  let costo = prompt("Ingrese el costo del articulo:");
-  abasto.agregarArticulo(new Cl_articulo(id, nombre, costo));
-};
 
-let eliminarArticulo = (abasto) => {
-  let id = prompt("Ingrese el id del articulo a eliminar:");
-  if (abasto.eliminarArticulo(id)) alert(`Se eliminó el articulo ${id}`);
-  else alert(`No existe el articulo ${id}`);
-};
-
-let listarArticulos = (abasto, salida) => {
-  salida.innerHTML = "";
-  abasto.articulos.forEach((articulo) => {
-    salida.innerHTML += `<br>${articulo.id} ${articulo.nombre} ${
-      articulo.costo
-    } ${articulo.pvp()}`;
-  });
-}; */
-  
   let salida1 = document.getElementById("salida1"),
     salida2 = document.getElementById("salida2"),
     opciones = document.getElementById("opciones");
@@ -108,7 +88,7 @@ let listarArticulos = (abasto, salida) => {
     <br>1= Agregar estudiante
     <br>2= Porcentaje de Aprobados
     <br>3= Porcentaje de Reprobados
-    <br>4= Estudiante con la mejor nota
+    <br>4= Estudiantes con la mejor nota
     <br>5= Chicas por encima de la nota promedio
     <br>6= Listar estudiantes
     <br>7= Eliminar estudiante
@@ -124,7 +104,7 @@ let listarArticulos = (abasto, salida) => {
       porcentajeAprobados(examen, salida2);
        break;
       case 3:
-        porcentaReprobados(examen, salida2);
+       porcentajeReprobados(examen, salida2);
         break;
       case 4:
         mejorNota(examen, salida2);
